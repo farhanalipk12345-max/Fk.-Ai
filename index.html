@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Queen </title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Jameel+Noori+Nastaleeq&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            /* Background picture with soft romantic overlay */
+            background: linear-gradient(135deg, rgba(255, 154, 158, 0.75) 0%, rgba(254, 207, 239, 0.75) 99%), url('bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: 'Poppins', 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif;
+            color: #fff;
+            text-align: center;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        .urdu-text {
+            font-family: 'Jameel Noori Nastaleeq', serif;
+            font-size: 1.8rem;
+            line-height: 2.2;
+            direction: rtl;
+            color: #ffffff;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+        .section {
+            display: none;
+            padding: 40px 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h2 {
+            color: #ff2a5f;
+            text-shadow: 2px 2px 5px rgba(255,255,255,0.8);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        p {
+            font-size: 1.2rem;
+            color: #4a4a4a;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        .btn {
+            background: #ff2a5f;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 42, 95, 0.4);
+            transition: 0.3s;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+        .btn:hover {
+            background: #e01141;
+            transform: scale(1.05);
+        }
+        .music-bar {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin: 15px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        .music-btn {
+            background: #ff2a5f;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .music-btn:hover {
+            background: #e01141;
+        }
+        .music-text {
+            color: #4a4a4a;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        /* Card container for teddy bears to fix cross issue & display properly */
+        .teddy-container {
+            position: relative;
+            height: 200px;
+            margin: 25px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 25px;
+            padding: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .teddy {
+            font-size: 4.5rem;
+            position: absolute;
+        }
+        .teddy-left {
+            left: 12%;
+            animation: hugLeft 2s infinite alternate ease-in-out;
+        }
+        .teddy-right {
+            right: 12%;
+            animation: hugRight 2s infinite alternate ease-in-out;
+        }
+        .heart-middle {
+            font-size: 3.5rem;
+            color: #ff2a5f;
+            position: absolute;
+            animation: heartbeat 1s infinite;
+        }
+        @keyframes hugLeft {
+            0% { transform: translateX(0) rotate(0deg); }
+            100% { transform: translateX(25px) rotate(5deg); }
+        }
+        @keyframes hugRight {
+            0% { transform: translateX(0) rotate(0deg); }
+            100% { transform: translateX(-25px) rotate(-5deg); }
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.25); }
+            100% { transform: scale(1); }
+        }
+        #countdown-number {
+            font-size: 5rem;
+            font-weight: bold;
+            color: #ff2a5f;
+            background: white;
+            width: 150px;
+            height: 150px;
+            line-height: 150px;
+            border-radius: 50%;
+            margin: 30px auto;
+            box-shadow: 0 10px 30px rgba(255,42,95,0.4);
+        }
+        .cake { 
+            position: relative; 
+            width: 150px; 
+            height: 100px; 
+            background: #f4c2c2; 
+            margin: 50px auto 20px auto; 
+            border-radius: 10px 10px 0 0; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15); 
+        }
+        .candle { 
+            position: absolute; 
+            top: -30px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 10px; 
+            height: 30px; 
+            background: #ffeb3b; 
+            border-radius: 5px; 
+        }
+        .flame { 
+            position: absolute; 
+            top: -15px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 12px; 
+            height: 20px; 
+            background: #ff9800; 
+            border-radius: 50% 50% 20% 20%; 
+            animation: flicker 0.5s infinite alternate; 
+        }
+        @keyframes flicker { 
+            0% { transform: translateX(-50%) scale(1); opacity: 1; } 
+            100% { transform: translateX(-50%) scale(1.2); opacity: 0.8; } 
+        }
+        /* Floating balloons and flowers setup */
+        .floating-element { 
+            position: fixed; 
+            top: -10vh; 
+            z-index: 9999; 
+            user-select: none; 
+            cursor: default; 
+            animation: fall linear forwards; 
+            font-size: 2.5rem !important;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.9));
+        }
+        @keyframes fall { 
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; } 
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0.2; } 
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Local Audio file playing directly from GitHub repository -->
+    <audio id="bg-music" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        
+        <div class="music-bar">
+            <span class="music-text"> Tujhe Keh Du Ya Rehne Du Raaz Mere</span>
+            <button class="music-btn" id="play-music-btn" onclick="toggleMusic()">Play Music </button>
+        </div>
+
+        <div id="sec-1" class="section active">
+            <h2>Suno Meri Queen... </h2>
+            <div class="urdu-text">
+                Meri jaan, meri queen! Tainu ki dassaen tu mere layi ki aen. Sach aakhan taan tu meri poori duniya aen. Tu Mari Zindagi ka Hr khubsurst pal ho Mari sardion ki Lambi Raton mein Mari skoon ki Neend Ho!
+            </div>
+            <button class="btn" onclick="nextSection(2)">Aage Chalo Jaan </button>
+        </div>
+
+        <div id="sec-2" class="section">
+            <h2>I love You Jana... </h2>
+            <div class="urdu-text">
+                Tujhe keh du ya rehne du raaz mere, sab kuch keh du kya tujhko? <br>
+                Tu mujhko chhod jaayegi ya aayegi paas mere, issi baat ka darr hai mujhko... <br>
+                Ke ho na jaye pyaar tumse, mujhe behad beshumar tumse, kar dega barbaad ishq mujhe! 
+            </div>
+            <button class="btn" onclick="nextSection(3)">Humari Yaadein </button>
+        </div>
+
+        <div id="sec-3" class="section">
+            <h2>Pyar Bhari Jhappiyan... </h2>
+            <p>Chalo pass nahi toh kya hua, yeh cute teddy bears aur dil aapke liye hain!</p>
+            
+            <div class="teddy-container">
+                <div class="teddy teddy-left"></div>
+                <div class="heart-middle"></div>
+                <div class="teddy teddy-right"></div>
+            </div>
+            <p style="margin-top: 20px;">Main hamesha tumhare paas hoon, jaise yeh teddy ek dusre ke paas hain.</p>
+            
+            <button class="btn" onclick="nextSection(4)">Surprise ki taraf chalain </button>
+        </div>
+
+        <div id="sec-4" class="section">
+            <h2>Get Ready for Magic! </h2>
+            <p>Kuch bhot hi pyara khulne wala hai...</p>
+            <div id="countdown-number">10</div>
+        </div>
+
+        <div id="sec-5" class="section">
+            <h2>Happy Birthday My Queen! </h2>
+            <div class="cake">
+                <div class="candle"><div class="flame"></div></div>
+            </div>
+            <p class="urdu-text" style="text-align: center; margin-top: 15px; color: #ffffff;">
+                Allah tainu hamesha khush rakhe, hasti muskurati rakhe aur humesha mera sath naseeb kare!
+            </p>
+            <button class="btn" onclick="nextSection(6)">Dher Saari Wishes </button>
+        </div>
+
+        <div id="sec-6" class="section">
+            <h2>Forever & Always </h2>
+            <div class="urdu-text" style="font-size: 1.5rem;">
+                In every beat of my heart, you reside,<br>
+                With you, my world is bright and wide.<br>
+                Through every smile and every tear,<br>
+                Having you close makes life so dear.<br>
+                You are my peace, my joy, my light,<br>
+                Making the darkest days feel right.<br>
+                Forever and always, hand in hand,<br>
+                Walking together through wonderland. <br><br>
+                <span style="color: #ff2a5f; font-weight: bold; text-shadow: 1px 1px 3px rgba(255,255,255,0.8);">I Love You So Much Meri Jaan!</span><br><br>
+                Bahot yaad aundi hai jadon tu kol nahi hundi (Miss You So Much!)... <br><br>
+                Aur aakhri sach yeh hai ke: <br>
+                <strong>Main tumhara hi hoon aur hamesha, forever tumhara hi rahunga!</strong> <br><br>
+                Khuda Hafiz meri jaan! 
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let isPlaying = false;
+
+        function toggleMusic() {
+            let music = document.getElementById('bg-music');
+            let btn = document.getElementById('play-music-btn');
+            
+            if (!isPlaying) {
+                music.play().then(() => {
+                    isPlaying = true;
+                    btn.textContent = "Pause Music ";
+                }).catch(error => {
+                    console.log("Error playing audio:", error);
+                });
+            } else {
+                music.pause();
+                isPlaying = false;
+                btn.textContent = "Play Music ";
+            }
+        }
+
+        function nextSection(secNum) {
+            window.scrollTo(0,0);
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById('sec-' + secNum).classList.add('active');
+
+            if(secNum === 4) {
+                startCountdown();
+            }
+        }
+
+        function startCountdown() {
+            let count = 10;
+            let timerEl = document.getElementById('countdown-number');
+            timerEl.textContent = count;
+            let interval = setInterval(() => {
+                count--;
+                timerEl.textContent = count;
+                if(count <= 0) {
+                    clearInterval(interval);
+                    startCelebration();
+                    nextSection(5);
+                }
+            }, 1000);
+        }
+
+        function startCelebration() {
+            let celebrationIntent = setInterval(() => {
+                let el = document.createElement('div');
+                el.classList.add('floating-element');
+                el.innerHTML = Math.random() > 0.5 ? '' : '';
+                el.style.left = Math.random() * 100 + 'vw';
+                el.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                document.body.appendChild(el);
+                
+                setTimeout(() => {
+                    el.remove();
+                }, 6000);
+            }, 300);
+
+            setTimeout(() => clearInterval(celebrationIntent), 6000);
+        }
+    </script>
+</body>
+</html>
